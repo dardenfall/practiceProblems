@@ -1,0 +1,92 @@
+<html>
+<head>
+  <title>Fib Rows in Jquery</title>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="evens">
+    <h3> evens</h3>
+  </div>
+
+  <div class="odds">
+    <h3> odds</h3>
+  </div>
+
+  <div class="fib">
+    <h3> fib</h3>
+  </div>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+
+    var createRows = function(numRows = 10, target){
+
+      for(let i=0; i < numRows; i++){
+        let rowText = `<div class='row'>Hello ${i}</div>`;
+        $(target).append(rowText);
+      }
+
+    }
+
+    createRows(10, $('.evens'));
+    createRows(10, $('.odds'));
+    createRows(30, $('.fib'));
+
+    var highlightEvensJavascript = function(){
+      console.log('here')
+      $('.evens div').each(function(index, div){
+        if(index % 2 === 0){
+          console.log('here')
+          $(div).css('background', 'red');
+        }
+      })
+    }
+    highlightEvensJavascript();
+
+    var highlightOdds = function(){
+      $('.odds div:nth-child(odd)').css( 'background-color', 'green');
+    }
+    highlightOdds();
+
+
+    var fib = function(n) {
+      if(n === 0){
+        return 0
+      }
+      else if(n === 1){
+        return 1;
+      }
+      else{
+        return fib(n-1) + fib(n-2)
+      }
+    }
+
+
+    let fibNumbers = [];
+    for(var i = 0; i < 20; i++){
+      fibNumbers.push(fib(i));
+    }
+
+    console.log('here')
+    var highlightFib = function(){
+
+      var divs = $('.fib div');
+
+      for(var j=0; j < divs.length; j++){
+        if(fibNumbers.includes(j)){
+          var d = divs[j];
+          $(d).css('background','blue');
+        }
+      }
+    }
+    highlightFib();
+
+  })
+
+  </script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,14 @@
+
+input: www.blahblahblah.com
+output: z.co/fdsre
+
+create service:
+1) check to see if entry exists in hash map
+2) if so, return the existing shortened url
+3) if not, hash the domain and store the result
+4) send it back to the user
+
+http service process: 
+  1) get the string
+  2) use the key to get the domain  
+  3) forward the request

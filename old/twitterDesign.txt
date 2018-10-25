@@ -1,0 +1,47 @@
+Tables:
+-------
+
+hashtag: id, tweetid, hashtag, time
+                |
+         +------+       
+         |
+tweets: id, userid, text, time
+              |        
+       +------+
+       |
+user: id, username, email, first, last, joindate
+       |
+       +----------+--------+
+                  |        |
+follows: id, follower, followee, time
+
+
+mentions: id, tweetId, userId
+
+
+API:
+--------------------------
+CreateUser: 
+- POST .../users
+  <user info payload>
+
+Login & home:
+- GET .../users/<userid>
+  get user info for profile/homepage
+
+- GET .../tweets?userid=XXXX?pageSize=N&pageOffset=P
+  get a list of N tweets by followers of XXXX with a page offset of P
+
+Tweet:
+- GET .../tweets/tweetId
+
+- POST .../tweets
+  <tweet text payload & userId/cookie>
+
+Trending:
+- GET .../trending?timeOffset=ssssssssss
+  get a list of hashtags since epoch offset sssssss
+
+View posts with hashtag:
+- GET .../hashtag/<hastagId>?pageSize=N&pageOffset=P
+
