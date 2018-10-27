@@ -1,3 +1,8 @@
+
+// 4.1) Implement a function to check if a tree is balanced. 
+// For the purposes of this question, a balanced tree is de ned to be a tree 
+// such that no two leaf nodes di er in distance from the root by more than one.
+
 class Node {
   constructor (val){
     this._left = null;
