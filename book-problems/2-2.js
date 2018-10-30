@@ -1,4 +1,6 @@
-// 2-1 Write code to remove duplicates from an unsorted linked list.
+"use strict"
+//2.2 Implement an algorithm to  nd the nth to last element of a singly linked list.
+// 'nextToLast' below
 
 class Node {
   constructor(val){
@@ -12,7 +14,7 @@ class LinkedList {
     this._head = null;  
   }
 
-  append(val){
+  prepend(val){
     let currNode = new Node(val);
 
     currNode._next = this._head;
@@ -29,30 +31,7 @@ class LinkedList {
     return len;
   }
 
-  removeDuplicates(){
-    let currNode = this._head;
-
-    while(currNode !== null){
-      let curVal = currNode._val;
-
-      let searchNode = currNode._next;
-      let previous = currNode;
-      while(searchNode !== null){
-        if(curVal === searchNode._val){
-          //delete the node
-          previous._next = searchNode._next;
-        }
-        else{
-          previous = searchNode;
-        }
-
-        searchNode = searchNode._next
-      }
-
-      currNode = currNode._next;
-    }
-  }
-
+  //2.2
   nextToLast(){
     if(this._head === null){
       return null;

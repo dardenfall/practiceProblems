@@ -1,3 +1,4 @@
+"use strict"
 // 2-1 Write code to remove duplicates from an unsorted linked list.
 
 class Node {
@@ -12,7 +13,7 @@ class LinkedList {
     this._head = null;  
   }
 
-  append(val){
+  prepend(val){
     let currNode = new Node(val);
 
     currNode._next = this._head;
