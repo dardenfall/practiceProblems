@@ -2,7 +2,7 @@
 //1.2 Write code to reverse a C-Style String.
 // (C-String means that “abcd” is represented as  ve characters, including the null character.)
 
-//NOTE: I'm just doing a normal string, not C-Style because javascript
+// NOTE : not using c-like string
 
 String.prototype.myReverse = function(){
   
