@@ -11,6 +11,9 @@ function assert(x){
   if(!x){
     throw x.toString() + " is not true!";
   }
+  else{
+    console.log(x + " is true");
+  }
 }
 
 class Node {
@@ -110,4 +113,4 @@ assert(x.findCorruption());
 
 //assert no corruption
 let y = new LinkedList();y.append(1);y.append(5);y.append(2);
-assert(!x.findCorruption());
+assert(!y.findCorruption());
