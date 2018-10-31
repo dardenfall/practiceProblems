@@ -9,7 +9,7 @@ function assert(x, msg){
   }
 }
 
-function zeroOrInc(x){
+function oneOrInc(x){
   if(typeof x === 'undefined'){
     return 1;
   }
@@ -28,7 +28,7 @@ String.prototype.isAnagram = function(str){
 
   for(let i = 0; i < this.length; i++){
     let char = this.charAt(i);
-    letterMap[char] = zeroOrInc(letterMap[char]);
+    letterMap[char] = oneOrInc(letterMap[char]);
   }
 
   for (let i = 0; i < str.length; i++) {
@@ -53,6 +53,14 @@ String.prototype.isAnagram = function(str){
 
 var str1a = "abc";
 var str1b = "cba";
+assert(str1a.isAnagram(str1b), "str1a.isAnagram(str1b)")
+
+str1a = "abcc";
+str1b = "ccba";
+assert(str1a.isAnagram(str1b), "str1a.isAnagram(str1b)")
+
+str1a = "abc ya";
+str1b = "cb aay";
 assert(str1a.isAnagram(str1b), "str1a.isAnagram(str1b)")
 
 str1a = "ab";
