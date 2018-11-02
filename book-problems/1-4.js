@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 //1.4     Write a method to decide if two strings are anagrams or not.
 function assert(x, msg){
   if(!x){
@@ -44,7 +44,7 @@ String.prototype.isAnagram = function(str){
   
   for(var letterCount in letterMap){
     if(letterMap[letterCount] !== 0){
-      return false
+      return false;
     }
   }
   
@@ -53,16 +53,16 @@ String.prototype.isAnagram = function(str){
 
 var str1a = "abc";
 var str1b = "cba";
-assert(str1a.isAnagram(str1b), "str1a.isAnagram(str1b)")
+assert(str1a.isAnagram(str1b), "str1a.isAnagram(str1b)");
 
 str1a = "abcc";
 str1b = "ccba";
-assert(str1a.isAnagram(str1b), "str1a.isAnagram(str1b)")
+assert(str1a.isAnagram(str1b), "str1a.isAnagram(str1b)");
 
 str1a = "abc ya";
 str1b = "cb aay";
-assert(str1a.isAnagram(str1b), "str1a.isAnagram(str1b)")
+assert(str1a.isAnagram(str1b), "str1a.isAnagram(str1b)");
 
 str1a = "ab";
 str1b = "cba";
-assert(!str1a.isAnagram(str1b), "!str1a.isAnagram(str1b)")
+assert(!str1a.isAnagram(str1b), "!str1a.isAnagram(str1b)");

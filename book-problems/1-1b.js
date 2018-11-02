@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 //1.1) Implement an algorithm to determine if a string has all unique characters. 
 //  What if you can not use additional data structures?
 // NOTE : not using c-like string
@@ -6,7 +6,7 @@
 function hasDuplicates(str){
   
   str = str.toLowerCase();
-  
+
   for(let i=0; i < str.length; i++){
     let char = str.charAt(i);
 
@@ -23,3 +23,17 @@ function hasDuplicates(str){
 
   return false;
 }
+
+
+function assert(x, msg){
+  if(!x){
+    throw x.toString() + " is not true!";
+  }
+  else if(msg){
+    console.log("true: "  + msg);
+  }
+}
+
+assert(hasDuplicates("tooom"), "tooom");
+assert(!hasDuplicates("waits"), "waits");
+assert(hasDuplicates("ttt"), "ttt");

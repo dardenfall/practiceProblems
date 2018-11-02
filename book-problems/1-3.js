@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 // 1.3 Design an algorithm and write code to remove the duplicate characters 
 // in a string without using any additional buffer. NOTE: One or two additional variables are  
 // fine. 
@@ -27,15 +27,6 @@
 //               d     d           d null
 //               null  null        n
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
-  }
-  else if(msg){
-    console.log(msg);
-  }
-}
-
 
 function arrayEquals(a1, a2){
   if(a1 === null && a2 === null){
@@ -62,20 +53,33 @@ function removeDuplicates(cLikeString){
 
   if(cLikeString.length < 2) return;
 
+  let tail = 1;
   for (let i = 1; cLikeString[i] !== null; i++) {
     
-    let tail = 1;
-
     for(var j = 0; j < tail; j++){
       if(cLikeString[i] === cLikeString[j]) break;
     }
 
     if(j === tail){
       cLikeString[tail] = cLikeString[i];
-      tail++
+      tail++;
     }
   }
 
-  cLikeString[tail] = null
+  cLikeString[tail] = null;
+  return cLikeString;
 }
 
+function assert(x, msg){
+  if(!x){
+    throw x.toString() + " is not true!";
+  }
+  else if(msg){
+    console.log("true: "  + msg);
+  }
+}
+
+assert(arrayEquals(
+  removeDuplicates(['b','o','w','w','w','i','e','e',null]), 
+  [ 'b', 'o', 'w', 'i', 'e', null, 'e', 'e', null ], 
+  "['b','o','w','w','w','i','e','e',null]"), "['b','o','w','w','w','i','e','e','e',null]");

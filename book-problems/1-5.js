@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 //1.5      Write a method to replace all spaces in a string with ‘%20’.
 // 
 // NOTE: this is using C-like strings will null for a delimiter
@@ -58,7 +58,7 @@ function urlEncodeSpace(cLikeString){
       newString[newDelimiterIndex++] = "0";
     }
     else {
-      newString[newDelimiterIndex++] = char 
+      newString[newDelimiterIndex++] = char;
     }    
   }
 
@@ -69,13 +69,13 @@ function urlEncodeSpace(cLikeString){
 
 assert(arrayEquals(['a', 'b', null],['a', 'b', null]), "arrayEquals(['a', 'b', null],['a', 'b', null])")
 
-var str1 = ['a', 'b', null]
+var str1 = ['a', 'b', null];
 assert(getStringLength(str1) === 2, "getStringLength(str1) === 2");
 
-str1 = ['a', 'b', null]
+str1 = ['a', 'b', null];
 assert(arrayEquals(str1, urlEncodeSpace(str1)), "arrayEquals(str1, urlEncodeSpace(str1))");
 
-str1 = ['a', 'b', ' ', null]
+str1 = ['a', 'b', ' ', null];
 assert(arrayEquals(urlEncodeSpace(str1),['a', 'b', '%', '2', '0', null]), "arrayEquals(str1, urlEncodeSpace(str1))");
 
 str1 = ['a', 'b', ' ', 'c', ' ', null]
