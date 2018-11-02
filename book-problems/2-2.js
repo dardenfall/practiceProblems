@@ -52,3 +52,15 @@ class LinkedList {
   }
 }
 
+function assert(x, msg){
+  if(!x){
+    throw x.toString() + " is not true!";
+  }
+  else if(msg){
+    console.log("true: "  + msg);
+  }
+}
+
+let x = new LinkedList();
+x.prepend("Tom");x.prepend("Petty");x.prepend("Tom");x.prepend("Waits");
+assert(x.nextToLast()._val === "Petty", "second to last is Petty")

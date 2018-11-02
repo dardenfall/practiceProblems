@@ -3,13 +3,27 @@
 // 
 // NOTE: this is using C-like strings will null for a delimiter
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+function urlEncodeSpace(cLikeString){
+
+  let newDelimiterIndex = 0;
+  let newString = new Array();
+
+  for (let i = 0; cLikeString[i] !== null; i++) {
+    let char = cLikeString[i];
+
+    if(char === ' '){
+      newString[newDelimiterIndex++] = "%";
+      newString[newDelimiterIndex++] = "2";
+      newString[newDelimiterIndex++] = "0";
+    }
+    else {
+      newString[newDelimiterIndex++] = char;
+    }    
   }
-  else if(msg){
-    console.log("true: "  + msg);
-  }
+
+
+  newString[newDelimiterIndex] = null;
+  return newString;
 }
 
 function getStringLength(cLikeString){
@@ -44,27 +58,14 @@ function arrayEquals(a1, a2){
   return true;
 }
 
-function urlEncodeSpace(cLikeString){
 
-  let newDelimiterIndex = 0;
-  let newString = new Array();
-
-  for (let i = 0; cLikeString[i] !== null; i++) {
-    let char = cLikeString[i];
-
-    if(char === ' '){
-      newString[newDelimiterIndex++] = "%";
-      newString[newDelimiterIndex++] = "2";
-      newString[newDelimiterIndex++] = "0";
-    }
-    else {
-      newString[newDelimiterIndex++] = char;
-    }    
+function assert(x, msg){
+  if(!x){
+    throw x.toString() + " is not true!";
   }
-
-
-  newString[newDelimiterIndex] = null;
-  return newString;
+  else if(msg){
+    console.log("true: "  + msg);
+  }
 }
 
 assert(arrayEquals(['a', 'b', null],['a', 'b', null]), "arrayEquals(['a', 'b', null],['a', 'b', null])")

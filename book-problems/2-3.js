@@ -61,3 +61,17 @@ function deleteNodeWithAccessOnlyToTheNode(node){
   node._next = null;
 }
 
+
+function assert(x, msg){
+  if(!x){
+    throw x.toString() + " is not true!";
+  }
+  else if(msg){
+    console.log("true: "  + msg);
+  }
+}
+
+let x = new LinkedList();
+x.prepend("Tom");x.prepend("Petty");x.prepend("Tom");x.prepend("Waits");
+deleteNodeWithAccessOnlyToTheNode(x._head._next);
+assert( x.length() === 3, "length is now 3")

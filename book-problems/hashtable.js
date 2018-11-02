@@ -1,3 +1,4 @@
+"use strict";
 
 class StringHashTable {
 
@@ -25,4 +26,43 @@ class StringHashTable {
 
 }   
 
- 
+function assert(x, msg){
+  if(!x){
+    throw x.toString() + " is not true!";
+  }
+  else if(msg){
+    console.log("true: "  + msg);
+  }
+}
+
+function arrayEquals(a1, a2){
+  if(a1 === null && a2 === null){
+    return true;
+  }
+
+  if(a1 === null || a2 === null){
+    return false;
+  }
+
+  if(a1.length !== a2.length){
+    return false;
+  }
+
+  for (var i = 0; i < a1.length; i++) {
+    if(a1[i] !== a2[i]){
+      return false;
+    }
+  }
+  return true;
+}
+
+var s = new StringHashTable();
+
+s.insert("deus ex");s.insert("doom");s.insert("morrowind");
+s.insert("ftl");s.insert("dark souls");
+s.insert("apple");
+s.insert("zoom");
+assert(s._table[3].length === 3,"3 d strings");
+assert(arrayEquals(s._table[3],["deus ex", "doom", "dark souls"]), "d string equality");
+assert(s._table[0].length === 1,"1 a string");
+assert(s._table[25].length === 1,"1 z string");

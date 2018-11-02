@@ -24,7 +24,7 @@ class LinkedList {
     let currNode = this._head;
     let len = 0;
     while(currNode !== null){
-      len++
+      len++;
       currNode = currNode._next;
     }
     return len;
@@ -47,7 +47,7 @@ class LinkedList {
           previous = searchNode;
         }
 
-        searchNode = searchNode._next
+        searchNode = searchNode._next;
       }
 
       currNode = currNode._next;
@@ -55,3 +55,19 @@ class LinkedList {
   }
 }
 
+function assert(x, msg){
+  if(!x){
+    throw x.toString() + " is not true!";
+  }
+  else if(msg){
+    console.log("true: "  + msg);
+  }
+}
+
+let x = new LinkedList();
+x.prepend("Tom");x.prepend("Petty");x.prepend("Tom");x.prepend("Waits");
+x.removeDuplicates();
+assert(x._head._val === "Waits", "Check root");
+assert(x._head._next._val === "Tom", "Check Tom");
+assert(x._head._next._next._val === "Petty", "Check Petty");
+assert(x.length() === 3, "check length === 3");
