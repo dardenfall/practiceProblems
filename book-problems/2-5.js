@@ -7,14 +7,7 @@
 // input: A -> B -> C -> D -> E -> C [the same C as earlier]
 // output: C
 
-function assert(x){
-  if(!x){
-    throw x.toString() + " is not true!";
-  }
-  else{
-    console.log(x + " is true");
-  }
-}
+//note - works in javascript not node
 
 class Node {
   constructor(val){
@@ -103,6 +96,15 @@ class LinkedList {
     }
 
     return retval;
+  }
+}
+
+function assert(x){
+  if(!x){
+    throw x.toString() + " is not true!";
+  }
+  else{
+    console.log(x + " is true");
   }
 }
 

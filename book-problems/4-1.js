@@ -72,3 +72,28 @@ class BST {
   }
 }
 
+
+function assert(x){
+  if(!x){
+    throw x.toString() + " is not true!";
+  }
+  else{
+    console.log("true:   " + x);
+  }
+}
+
+var x = new BST();
+x.insert(1);x.insert(2);x.insert(4);x.insert(2)
+assert(!x.balanced(), "not balanced is false")
+
+x = new BST();
+x.insert(5);x.insert(2);x.insert(6);x.insert(7)
+assert(x.balanced(), "balanced is true")
+
+x = new BST();
+x.insert(5);x.insert(2);x.insert(6);
+assert(x.balanced(), "balanced is true")
+
+x = new BST();
+x.insert(5);x.insert(2);x.insert(6);x.insert(7)
+assert(x.balanced(), "balanced is true")
