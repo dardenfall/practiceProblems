@@ -34,22 +34,20 @@
 // 2: 0,1 -> 1,3
 // 3: 0,2 -> 2,3
 // 4: 0,3 -> 3,3
+
 function rotateMatrix(m){
   let rotatedMatrix = [];
-  let n = m.length;
-  debugger;
-  for (var i = 0; i < n; i++) {
+
+  for (var i = 0; i < m.length; i++) {
     rotatedMatrix.push(new Array());
   }
 
-  for (let rowIndex = 0; rowIndex < n; rowIndex++) {
-    let row = m[rowIndex];
-
-    for (let columnIndex = 0; columnIndex < row.length; columnIndex++) {
-
-      rotatedMatrix[columnIndex][n - (rowIndex + 1)] = m[rowIndex][columnIndex];
-    }
-  }
+  m.forEach((row, rowIndex) => {
+    row.forEach( (column, columnIndex) => {
+      debugger;
+      rotatedMatrix[columnIndex][m.length - (rowIndex + 1)] = m[rowIndex][columnIndex];
+    }) 
+  })  
   return rotatedMatrix;
 }
 

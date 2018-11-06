@@ -2,24 +2,28 @@
 //1.7  Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0.
 
 function propagateZero(m){
-  let rowToZero = [];
-  let columnToZero = [];
+  let rowIndexToZeroOut = [];
+  let columnIndexToZeroOut = [];
 
-  for (let rowIndex = 0; rowIndex < m.length; rowIndex++) {
-    let row = m[rowIndex];
+  m.forEach((row, rowIndex) => {
+    console.log(row)
+    row.forEach( (column, columnIndex) => {
+      if(column === 0){
+        rowIndexToZeroOut.push(rowIndex);
+        columnIndexToZeroOut.push(columnIndex);
+      }
+    }) 
+  })
 
-    for (let columnIndex = 0; columnIndex < row.length; columnIndex++) {
+  m.forEach((row, rowIndex) => {
+    console.log(row)
+    row.forEach( (column, columnIndex) => {
+      if(rowIndexToZeroOut.includes(rowIndex) || columnIndexToZeroOut.includes(columnIndex)){
+        m[rowIndex][columnIndex] = 0
+      }
+    }) 
+  })
 
-      rotatedMatrix[columnIndex][n - (rowIndex + 1)] = m[rowIndex][columnIndex];
-    }
-  }
-  return rotatedMatrix;
-}
-
-function matrixEquals(m1, m2){
-  for(let row = 0; row){
-    
-  }
 }
 
 function arrayEquals(a1, a2){
@@ -43,7 +47,30 @@ function arrayEquals(a1, a2){
   return true;
 }
 
-function assert(){
+function matrixEquals(m1, m2){
+  if(m1 === null && m2 === null){
+    return true;
+  }
+
+  if(m1 === null || m2 === null){
+    return false;
+  }
+
+  if(m1.length !== m2.length){
+    return false;
+  }
+
+  for(let rowIndex = 0; m1[rowIndex] < m1.length; rowIndex++){
+    if(!arrayEquals(m1[rowIndex], m2[rowIndex])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+
+function assert(x){
   if(!x){
     throw x.toString() + " is not true!";
   }
@@ -52,4 +79,5 @@ function assert(){
   }
 }
 
-assert(propagateZero([1,2,3][]))
+console.log(matrixEquals([[1,2,3][2,3,0]], [[1,2,0],[0,0,0]]))
+assert(matrixEquals( propagateZero([[1,2,3][2,3,0]]), [[1,2,0],[0,0,0]]), "3x2 not working")
