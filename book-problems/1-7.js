@@ -6,7 +6,6 @@ function propagateZero(m){
   let columnIndexToZeroOut = [];
 
   m.forEach((row, rowIndex) => {
-    console.log(row)
     row.forEach( (column, columnIndex) => {
       if(column === 0){
         rowIndexToZeroOut.push(rowIndex);
@@ -16,14 +15,15 @@ function propagateZero(m){
   })
 
   m.forEach((row, rowIndex) => {
-    console.log(row)
     row.forEach( (column, columnIndex) => {
-      if(rowIndexToZeroOut.includes(rowIndex) || columnIndexToZeroOut.includes(columnIndex)){
-        m[rowIndex][columnIndex] = 0
+      if(rowIndexToZeroOut.indexOf(rowIndex) !== -1 || 
+         columnIndexToZeroOut.indexOf(columnIndex) !== -1) {
+        m[rowIndex][columnIndex] = 0;
       }
     }) 
   })
 
+  return m;
 }
 
 function arrayEquals(a1, a2){
@@ -70,7 +70,7 @@ function matrixEquals(m1, m2){
 }
 
 
-function assert(x){
+function assert(x, msg){
   if(!x){
     throw x.toString() + " is not true!";
   }
@@ -79,5 +79,12 @@ function assert(x){
   }
 }
 
-console.log(matrixEquals([[1,2,3][2,3,0]], [[1,2,0],[0,0,0]]))
-assert(matrixEquals( propagateZero([[1,2,3][2,3,0]]), [[1,2,0],[0,0,0]]), "3x2 not working")
+assert(
+  matrixEquals( 
+    propagateZero([[1,2,3],[2,3,0]]), 
+                  [[1,2,0],[0,0,0]]), "3x2 is working");
+
+assert(
+  matrixEquals( 
+    propagateZero([[0,2],[2,0]]), 
+                  [[0,0],[0,0]]), "2x2 is working");
