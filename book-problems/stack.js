@@ -10,29 +10,37 @@ class Node {
 class Stack {
 
   constructor(){
-    this._root = null;
+    this._top = null;
+    this._size = 0;
   }
 
   push(val){
     let n = new Node(val);
 
-    if(this._root === null){
-      this._root = n;
+    if(this._top === null){
+      this._top = n;
     }
     else{
-      n._next = this._root;
+      n._next = this._top;
+      this._top = n;
     }
+    this._size++;
   }
 
   pop(){
     let retval = null;
     
-    if(this._root !== null){
-      retval = this._root;
-      this._root = retval._next;
+    if(this._top !== null){
+      retval = this._top._val;
+      this._top = this._top._next;
     }
 
+    this._size--;
     return retval;
+  }
+
+  size(){
+    return this._size;
   }
 }
 
@@ -45,5 +53,18 @@ function assert(x, msg){
   }
 }
 
-assert(!hasDuplicatesEs6("waits"), "waits");
+let s = new Stack();
+s.push(1);
+assert(s.size() === 1, "size === 1");
+assert(s.pop() === 1, "1");
+assert(s.size() === 0, "size === 0");
+s.push("elite");s.push("starflight");s.push("no man's sky");
+assert(s.size() === 3, "size === 3");
+assert(s.pop() === "no man's sky","no man's sky");
+assert(s.pop() === "starflight","starflight");
+assert(s.pop() === "elite","elite");
+assert(s.size() === 0, "size === 0");
+assert(s.pop() === null, "null");
+assert(s.pop() === null, "null");
+
 

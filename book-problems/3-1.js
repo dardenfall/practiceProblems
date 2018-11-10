@@ -1,48 +1,9 @@
 "use strict";
-//1.1) Implement an algorithm to determine if a string has all unique characters. 
-// NOTE : not using c-like string
+//3.1 Describe how you could use a single array to implement three stacks.
 
-function hasDuplicates(str){
-  
-  let uniquesObj = {};
+// Whenever you insert or remove an element you can use modulo 3 to determine where your element is 
+// going to be placed and where it should be popped from.  If you keep track of the length of the 
+// array it is a pretty simple calculation to figure out the index for each operation.  
 
-  for(let i=0; i < str.length; i++){
-    if(uniquesObj[str.charAt(i)]){
-      return true;
-    }
-
-    uniquesObj[str.charAt(i)] = true;
-  }
-
-  return false;
-}
-
-function hasDuplicatesEs6(str){
-  let uniquesObj = {};
-
-  return [...str].some(ch => {
-    if(uniquesObj[ch]){
-      return true;
-    }
-    uniquesObj[ch] = true;
-    return false;
-  })
-
-
-}
-
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
-  }
-  else if(msg){
-    console.log("true: "  + msg);
-  }
-}
-
-assert(hasDuplicates("tooom"), "tooom");
-assert(!hasDuplicates("waits"), "waits");
-assert(hasDuplicates("ttt"), "ttt");
-assert(hasDuplicatesEs6("ttt"), "ttt");
-assert(!hasDuplicatesEs6("waits"), "waits");
-
+// One constraint you have here is whether or not your array is fixed or not.  If it is fixed
+// you will need to prevent any push from overrunning the buffer. 
