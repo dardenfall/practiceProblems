@@ -84,7 +84,7 @@
       if(this._stackOfStacks.size() === 0){
         return null;
       }
-      
+
       let retval = this._stackOfStacks._top._val.pop();
 
       if(this._stackOfStacks._top._val.size() === 0){
@@ -110,6 +110,7 @@
   s.push(1);
   assert(s.pop() === 1, "1");
   s.push(1);s.push(2);s.push(3);s.push(4);
+  console.log('s');
   assert(s.pop() === 4, "4");
   assert(s.pop() === 3, "3");
   assert(s.pop() === 2, "2");

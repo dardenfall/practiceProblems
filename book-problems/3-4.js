@@ -1,120 +1,125 @@
   "use strict";
-  //3.3 Imagine a (literal) stack of plates. If the stack gets too high, it might topple. 
-  //  Therefore, in real life, we would likely start a new stack when the previous stack 
-  //  exceeds some threshold. Implement a data structure SetOfStacks that mimics this. 
-  //  SetOfStacks should be composed of several stacks, and should create a new stack once 
-  //  the previous one exceeds capacity. SetOfStacks.push() and SetOfStacks.pop() should 
-  //  behave identically to a single stack (that is, pop() should return the same values 
-  //  as it would if there were just a single stack).
+//3.4
+// In the classic problem of the Towers of Hanoi, you have 3 rods and N disks of di erent sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending order of size from top to bottom (e.g., each disk sits on top of an even larger one). You have the following constraints:
+// (A) Only one disk can be moved at a time.
+// (B) A disk is slid o  the top of one rod onto the next rod.
+// (C) A disk can only be placed on top of a larger disk.
+// Write a program to move the disks from the  rst rod to the last using Stacks.
 
-  class Node {
-    constructor(val){
-      this._val = val;
-      this._next = null;
+// NOTE : woof - what a pain.  I had to look up the psuedo code to figure out the algorithm to 
+//  do this
+
+class Node {
+  constructor(val){
+    this._val = val;
+    this._next = null;
+  }
+}
+
+class Stack {
+
+  constructor(){
+    this._top = null;
+    this._size = 0;
+  }
+
+  push(val){
+    let n = new Node(val);
+
+    if(this._top === null){
+      this._top = n;
+    }
+    else{
+      n._next = this._top;
+      this._top = n;
+    }
+    this._size++;
+  }
+
+  pop(){
+    let retval = null;
+    
+    if(this._top !== null){
+      retval = this._top._val;
+      this._top = this._top._next;
+    }
+
+    this._size--;
+    return retval;
+  }
+
+  size(){
+    return this._size;
+  }
+
+  peek(){
+    return this._top._val;
+  }
+}
+
+class Disk {
+  constructor(size){
+    this._size = size
+  }
+
+  size(){
+    return _size;
+  }
+}
+
+class Pole {
+  constructor(){
+    this._stack = new Stack();
+  }
+
+  canInsert(disk){
+    return this._stack.peek() > disk._size;
+  }
+
+  insert(disk){
+    if(!this.canInsert(disk)){
+      throw `Trying to insert ${disk.size()} on ${this._stack.peek().size()}`  
+    }
+    this._stack.push(disk);
+  }
+}
+
+class tohGame{
+  constructor(nDisksOnFirstPole){
+
+    this._stack1 = new Stack();
+    this._stack2 = new Stack();
+    this._stack3 = new Stack();
+
+    //put all the disks on the first pole
+    for (let i = nDisksOnFirstPole; i > 0; i--) {
+      this._stack1.insert(new Disk(i)); 
     }
   }
 
-  class Stack {
+  finishGame(){
+    while(this._stack1.){
 
-    constructor(){
-      this._top = null;
-      this._size = 0;
     }
 
-    push(val){
-      let n = new Node(val);
+    while(){
 
-      if(this._top === null){
-        this._top = n;
-      }
-      else{
-        n._next = this._top;
-        this._top = n;
-      }
-      this._size++;
     }
 
-    pop(){
-      let retval = null;
-      
-      if(this._top !== null){
-        retval = this._top._val;
-        this._top = this._top._next;
-      }
-
-      this._size--;
-      return retval;
-    }
-
-    size(){
-      return this._size;
-    }
   }
+}
 
-  class SetOfStacks {
 
-    constructor(setSize){
-      this._setSize = setSize;
-      this._stackOfStacks = new Stack();
-    }
-
-    _getTotalSize(){
-      let totalSize = 0;
-
-      for(let temp = this._stackOfStacks._top;  temp !== null; temp = temp._next){
-        totalSize += temp._val.size();
-      }
-
-      return totalSize;
-    }
-
-    push(val){
-      debugger;
-      if(this._getTotalSize() % this._setSize === 0){
-        let tmpStack = new Stack();
-        tmpStack.push(val);
-        this._stackOfStacks.push(tmpStack);
-      }
-      else{
-        this._stackOfStacks._top._val.push(val);
-      }
-    }
-
-    pop(){
-      if(this._stackOfStacks.size() === 0){
-        return null;
-      }
-      
-      let retval = this._stackOfStacks._top._val.pop();
-
-      if(this._stackOfStacks._top._val.size() === 0){
-        this._stackOfStacks.pop();
-      }
-
-      return retval;
-    }
+function assert(x, msg){
+  if(!x){
+    throw x.toString() + " is not true!";
   }
-
-  function assert(x, msg){
-    if(!x){
-      throw x.toString() + " is not true!";
-    }
-    else if(msg){
-      console.log("true: "  + msg);
-    }
+  else if(msg){
+    console.log("true: "  + msg);
   }
+}
 
 
-  let s = new SetOfStacks(3);
-  debugger;
-  s.push(1);
-  assert(s.pop() === 1, "1");
-  s.push(1);s.push(2);s.push(3);s.push(4);
-  assert(s.pop() === 4, "4");
-  assert(s.pop() === 3, "3");
-  assert(s.pop() === 2, "2");
-  assert(s.pop() === 1, "1");
-  assert(s.pop() === null, "null");
 
 
 

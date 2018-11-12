@@ -3,13 +3,6 @@
 //  Given two strings, s1 and s2, write code to check if s2 is a rotation of 
 //  s1 using only one call to isSubstring (i.e., “waterbottle” is a rotation of “erbottlewat”).
 
-// NOTE: 
-// When I was working on the algorithm, I checked the solution to see if I was on the right track.
-// Once I found out the concatenation trick, the problem was easy.  FWIW, I think this isn't a 
-// great question because that's all it's really checking - whether or not a candidate sees or 
-// knows that concatenation trick.  There's a lot more to software engineering than whethere or 
-// not someone can spot a nifty trick
-
 
 function isRotation(str1, str2){
 
