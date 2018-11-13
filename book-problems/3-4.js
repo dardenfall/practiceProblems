@@ -97,6 +97,7 @@ class tohGame{
     }
   }
 
+    
   finishGame(){
     while(this._stack1.){
 
