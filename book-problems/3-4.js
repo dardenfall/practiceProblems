@@ -63,17 +63,26 @@ class Disk {
   }
 
   size(){
-    return _size;
+    return this._size;
   }
 }
 
-class Pole {
+class Tower {
   constructor(){
     this._stack = new Stack();
   }
 
   canInsert(disk){
-    return this._stack.peek() > disk._size;
+
+    if(this._stack.size() > 0){
+      return this._stack.peek().size() > disk._size;
+    }
+
+    return true;
+  }
+
+  removeTop(){
+    return this._stack.pop();
   }
 
   insert(disk){
@@ -84,32 +93,33 @@ class Pole {
   }
 }
 
-class tohGame{
-  constructor(nDisksOnFirstPole){
+class TOHGame{
+  constructor(nDisksOnFirstTower){
 
-    this._stack1 = new Stack();
-    this._stack2 = new Stack();
-    this._stack3 = new Stack();
+    this._tower1 = new Tower();
+    this._tower2 = new Tower();
+    this._tower3 = new Tower();
 
-    //put all the disks on the first pole
-    for (let i = nDisksOnFirstPole; i > 0; i--) {
-      this._stack1.insert(new Disk(i)); 
+    //put all the disks on the first Tower
+    for (let i = nDisksOnFirstTower; i > 0; i--) {
+      this._tower1.insert(new Disk(i)); 
     }
   }
 
-    
-  finishGame(){
-    while(this._stack1.){
+  moveTopDisk(startingTower, destTower){
+    let top = startingTower.removeTop();
+    destTower.insert(top);
+  }
 
+  //had to look up the algorithm for this one
+  moveDisks(numDisks, startingTower, helperTower, destTower){
+    if(numDisks > 0){
+      this.moveDisks(numDisks-1, startingTower, destTower, helperTower);
+      this.moveTopDisk(startingTower, destTower);
+      this.moveDisks(numDisks-1, helperTower, startingTower, destTower);
     }
-
-    while(){
-
-    }
-
   }
 }
-
 
 function assert(x, msg){
   if(!x){
@@ -120,7 +130,9 @@ function assert(x, msg){
   }
 }
 
-
-
-
+const GAME_SIZE = 3;
+let game = new TOHGame(GAME_SIZE);
+game.moveDisks(GAME_SIZE, game._tower1, game._tower2, game._tower3);
+game = new TOHGame(10);
+game.moveDisks(10, game._tower1, game._tower2, game._tower3);
 

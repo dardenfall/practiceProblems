@@ -1,7 +1,7 @@
-"use strict"
+"use strict";
 // 4.2) Given a directed graph, design an algorithm to find out whether there is a route 
 //    between two nodes.
-"use strict";
+
 
 class Node {
   constructor(val){
@@ -22,7 +22,7 @@ class DirectedGraph {
 
   add(val, connectingVal){
 
-    let connection = this.breadthFirstSearch(connectingVal);
+    let connection = this.routeExists(connectingVal, this._base);
   
     if(!connection) throw "Unable to find node to connect to";
 
@@ -64,3 +64,14 @@ function assert(x, msg){
   }
 }
 
+let dg = new DirectedGraph(1);
+dg.add("The Killers",1);
+dg.add("Weezer","The Killers");
+dg.add("Bleachers","Weezer");
+dg.add("Dark Souls",1);
+dg.add("Bloodborne","Dark Souls");
+assert(dg.routeExists("The Killers", dg._base), 'dg.routeExists("The Killers", dg._base)');
+assert(dg.routeExists("Bleachers", dg._base._connections[0]), 
+  'dg.routeExists("Bleachers", dg._base._connections[0])');
+assert(!dg.routeExists("Bloodborne", dg._base._connections[0]), 
+  '!dg.routeExists("Bloodborne", dg._base._connections[0])');
