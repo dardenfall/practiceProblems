@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 class Node {
   constructor(val){
@@ -7,7 +7,7 @@ class Node {
   }
   
   connect(node){
-    this._connections.push(node)
+    this._connections.push(node);
   }
 
 }
@@ -19,7 +19,7 @@ class DirectedGraph {
 
   add(val, connectingVal){
 
-    let connection = this.breadthFirstSearch(connectingVal)
+    let connection = this.breadthFirstSearch(connectingVal);
   
     if(!connection) throw "Unable to find node to connect to";
 
@@ -41,7 +41,7 @@ class DirectedGraph {
         }
 
         for(let node of searchNode._connections){
-          q.push(node)
+          q.push(node);
         }
 
         visitedArray.push(searchNode);
@@ -70,3 +70,8 @@ assert(dg._base._val === 1, "dg._base._val");
 assert(dg._base._connections[0]._val === 2, "dg._base._connections[0]._val === 2");
 assert(dg._base._connections[1]._val === 3, "dg._base._connections[0]._val === 3");
 assert(dg._base._connections[0]._connections[0]._val === 4, "dg._base._connections[0]._val === 4");
+//create a cyclic graph to test search
+dg._base._connections[0]._connections[0]._connections[0] = dg._base._connections[0];
+dg.add(5,4);
+assert(dg._base._val === 1, "dg._base._val");
+assert(dg.breadthFirstSearch(5)._val === 5, "dg.breadthFirstSearch(5)");
