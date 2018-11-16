@@ -1,5 +1,5 @@
   "use strict";
-//3.4  Implement a MyQueue class which implements a queue using two stacks. 
+//3.5  Implement a MyQueue class which implements a queue using two stacks. 
 
 
 class Node {
