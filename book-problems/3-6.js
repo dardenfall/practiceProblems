@@ -20,7 +20,16 @@ class Stack {
   static sortAscending(s){
     let returnStack = new Stack();
 
-    return 
+    while(s.size() > 0){
+      let temp = s.pop();
+
+      while(returnStack.size() > 0 && temp < returnStack.peek()){
+        s.push(returnStack.pop())
+      }
+      returnStack.push(temp);
+    }
+    
+    return returnStack;
   }
   
   push(val){
@@ -56,7 +65,6 @@ class Stack {
     return this._top._val;
   }
 
-
 }
 
 function assert(x, msg){
@@ -69,4 +77,10 @@ function assert(x, msg){
 }
 
 let s = new Stack();
-s.sortAscending()
+s.push(5);s.push(1);s.push(7);s.push(2);
+let n = Stack.sortAscending(s);
+assert(n.pop() === 7, 'n.pop === 7');
+assert(n.pop() === 5, 'n.pop === 5');
+assert(n.pop() === 2, 'n.pop === 2');
+assert(n.pop() === 1, 'n.pop === 1');
+
