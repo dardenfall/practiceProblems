@@ -59,12 +59,6 @@ class BSTp {
     return this.depthHelper(this._root, Math.max);
   }
 
-1. If X has a right child, then the successor must be on the right side of X (because of the order in which we visit nodes). 
-   Specically, the left-most child must be the  rst node visited in that subtree.
-2. Else, we go to X’s parent (call it P).
-2.a. If X was a left child (P.left = X), then P is the successor of X
-2.b. If X was a right child (P.right = X), then we have fully visited P, so we call successor(P).
-
   findSuccessor(node){
     if(node === null){
       return null;
@@ -86,17 +80,28 @@ class BSTp {
       return currNode;
     }
 
-    return findSuccessor(node);
+    return this.findSuccessor(currNode);
   }
 }
 
 function assert(x, msg){
   if(!x){
-    throw x.toString() + " is not true!";
+    throw (msg || "false assertion");
   }
   else if(msg){
     console.log("true: "  + msg);
   }
 }
 
-let b = new BST();
+let b = new BSTp();
+b.insert(6);
+b.insert(3);
+assert(b.findSuccessor(b._root._left)._val === 6, "b.findSuccessor(b._root._left)._val === 6")
+b.insert(10);
+b.insert(11);
+b.insert(9);
+b.insert(8);
+assert(b.findSuccessor(b._root._left)._val === 6, "b.findSuccessor(b._root._left)._val === 6")
+assert(b.findSuccessor(b._root)._val === 8, "b.findSuccessor(b._root._left)._val === 8")
+assert(b.findSuccessor(b._root._right)._val === 11, "b.findSuccessor(b._root._left)._val === 11")
+
