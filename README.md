@@ -5,3 +5,5 @@ This is a repo to track my progress on interview preparation, primarily, my work
 Most of the exercises are c++/java style questions but applicable to javascript, and that's what I've implemented the solutions in.  The solutions have unit tests and work in javascript and node except where there are incompatibilities.  (I use ES6 functionality here and there, those answers are named accordingly and obviously won't work in node.)  
 
 The specific work for those problems is in [book-problems](book-problems). 
+
+NOTE:  I included all code in every file so they could be run individually.  This resulted in a lot of copy-pasta, but it's how I ran things in my IDE and made them standalone.
