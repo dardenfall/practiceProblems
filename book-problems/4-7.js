@@ -15,6 +15,18 @@ class BST {
     this._root = null;
   }
 
+  static dfs(n, traversalNode){
+    if(traversalNode === null){
+      return false;
+    }
+
+    if(traversalNode._val === n){
+      return traversalNode;
+    }
+
+    return (this.dfsNode(n, traversalNode._left) || 
+            this.dfsNode(n, traversalNode._right));
+  }
   insert(x){
     if(this._root === null){
       this._root = new Node(x);
@@ -43,19 +55,6 @@ class BST {
       }
     }
   }
-  
-  dfs(n, traversalNode){
-    if(traversalNode === null){
-      return false;
-    }
-
-    if(traversalNode._val === n){
-      return true;
-    }
-
-    return (this.dfsNode(n, traversalNode._left) || 
-            this.dfsNode(n, traversalNode._right));
-  }
 
   depthHelper(node, reduceFunc){
     if(node === null){
@@ -83,7 +82,18 @@ class BST {
     return this.maxDepth() - this.minDepth() < 2;
   }
 
+  isSubTree(t){
+    var foundNode = BST.dfsNode(t._root, this._root);
+
+    if(!foundNode){
+      return false;
+    }
+
+    
+  }
+
 }
+
 
 const assert = function(test, msg){
   let message = "";
