@@ -15,7 +15,7 @@ class BST {
     this._root = null;
   }
 
-  static dfs(n, traversalNode){
+  static dfsNode(n, traversalNode){
     if(traversalNode === null){
       return false;
     }
@@ -71,25 +71,47 @@ class BST {
   }
 
   maxDepth(){
-    return this.depth()
+    return this.depth();
   }
 
   minDepth(){
-    return this.depthHelper(this._root, Math.min)
+    return this.depthHelper(this._root, Math.min);
   }
 
   balanced(){
     return this.maxDepth() - this.minDepth() < 2;
   }
 
-  isSubTree(t){
-    var foundNode = BST.dfsNode(t._root, this._root);
+  isSubTree(potentialSubTree){
+    
+    if(!potentialSubTree || !potentialSubTree._root){
+      return false;
+    }
+    
+    var foundNode = BST.dfsNode(potentialSubTree._root._val, this._root);
 
     if(!foundNode){
       return false;
     }
 
-    
+    const helper = function(potentialSubTreeNode, largerTreeNode){
+      if(potentialSubTreeNode === null){
+        return true;
+      }
+      
+      if(largerTreeNode === null){
+        return false;
+      }
+
+      if(potentialSubTreeNode._val !== largerTreeNode._val ){
+        return false;
+      }
+
+      return helper(potentialSubTreeNode._left, largerTreeNode._left) && 
+             helper(potentialSubTreeNode._right, largerTreeNode._right);
+    }
+
+    return helper(potentialSubTree._root, foundNode);
   }
 
 }
@@ -120,6 +142,17 @@ t.insert(5);
 t.insert(7);
 
 let t2 = new BST();
-t2.insert(5);
-t2.insert(7);
 t2.insert(6);
+t2.insert(7);
+t2.insert(5);
+
+let t3 = new BST();
+t3.insert(7);
+t3.insert(6);
+t3.insert(5);
+
+let t4 = new BST();
+
+assert(t.isSubTree(t2), "t.isSubTree(t2)");
+assert(!t.isSubTree(t3), "!t.isSubTree(t3)");
+assert(!t.isSubTree(t4), "!t.isSubTree(t4)");
