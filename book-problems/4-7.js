@@ -6,7 +6,7 @@ class Node {
   constructor (val){
     this._left = null;
     this._right = null;
-    this._val = val
+    this._val = val;
   }
 }
 
@@ -109,7 +109,7 @@ class BST {
 
       return helper(potentialSubTreeNode._left, largerTreeNode._left) && 
              helper(potentialSubTreeNode._right, largerTreeNode._right);
-    }
+    };
 
     return helper(potentialSubTree._root, foundNode);
   }
@@ -120,17 +120,17 @@ class BST {
 const assert = function(test, msg){
   let message = "";
   if(!test){
-    message = "Test FAILED!  "
+    message = "Test FAILED!  ";
   }
   else{
-    message = "test passed.  "
+    message = "test passed.  ";
   }
 
   if(msg){
     message += msg;
   }
   console.log(message);
-} 
+};
 
 let t = new BST();
 t.insert(4);
