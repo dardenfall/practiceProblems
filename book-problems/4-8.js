@@ -1,11 +1,7 @@
-/* eslint-disable no-console */
-/* eslint-disable indent */
 "use strict";
-// 4.6 Design an algorithm and write code to  find the  first common ancestor of two nodes in a binary tree. 
-//    Avoid storing additional nodes in a data structure. 
-//    NOTE: This is not necessarily a binary search tree.
+// 4.8 You are given a binary tree in which each node contains a value. Design an algorithm to print all paths which sum up to that value. 
+//   Note that it can be any path in the tree - it does not have to start at the root.
 
-// standard tree, in-order insertion
 class Node {
   constructor(val){
     this._val = val;
@@ -17,19 +13,6 @@ class Node {
 class Tree{
   constructor(){
     this._root = null;
-  }
-
-  dfsNode(n, traversalNode){
-    if(traversalNode === null){
-      return false;
-    }
-
-    if(traversalNode === n){
-      return true;
-    }
-
-    return (this.dfsNode(n, traversalNode._left) || 
-            this.dfsNode(n, traversalNode._right));
   }
 
   findCommonAncestor(node1, node2){
@@ -101,7 +84,7 @@ const assert = function(test, msg){
     message += msg;
   }
   console.log(message);
-};
+} 
 
 let t = new Tree();
 t.insert(1);
