@@ -1,7 +1,7 @@
 "use strict";
 //1.7  Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0.
 
-function propagateZero(m){
+const propagateZero = (m) => {
   let rowIndexToZeroOut = [];
   let columnIndexToZeroOut = [];
 
@@ -26,7 +26,7 @@ function propagateZero(m){
   return m;
 }
 
-function arrayEquals(a1, a2){
+const arrayEquals = (a1, a2) => {
   if(a1 === null && a2 === null){
     return true;
   }
@@ -47,7 +47,7 @@ function arrayEquals(a1, a2){
   return true;
 }
 
-function matrixEquals(m1, m2){
+const matrixEquals = (m1, m2) => {
   if(m1 === null && m2 === null){
     return true;
   }
@@ -69,15 +69,20 @@ function matrixEquals(m1, m2){
   return true;
 }
 
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
+  }
+  else{
+    message = "test passed.  ";
+  }
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+  if(msg){
+    message += msg;
   }
-  else if(msg){
-    console.log("true: "  + msg);
-  }
-}
+  console.log(message);
+};
 
 assert(
   matrixEquals( 

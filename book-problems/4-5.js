@@ -84,16 +84,22 @@ class BSTp {
   }
 }
 
-function assert(x, msg){
-  if(!x){
-    throw (msg || "false assertion");
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
 
-let b = new BSTp();
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+const b = new BSTp();
 b.insert(6);
 b.insert(3);
 assert(b.findSuccessor(b._root._left)._val === 6, "b.findSuccessor(b._root._left)._val === 6")

@@ -67,18 +67,24 @@ class Stack {
 
 }
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
 
-let s = new Stack();
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+const s = new Stack();
 s.push(5);s.push(1);s.push(7);s.push(2);
-let n = Stack.sortAscending(s);
+const n = Stack.sortAscending(s);
 assert(n.pop() === 7, 'n.pop === 7');
 assert(n.pop() === 5, 'n.pop === 5');
 assert(n.pop() === 2, 'n.pop === 2');

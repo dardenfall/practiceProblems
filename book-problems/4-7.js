@@ -118,7 +118,7 @@ class BST {
 }
 
 
-const assert = function(test, msg){
+const assert = (test, msg) => {
   let message = "";
   if(!test){
     message = "Test FAILED!  ";

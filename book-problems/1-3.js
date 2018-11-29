@@ -28,7 +28,7 @@
 //               null  null        n
 
 
-function arrayEquals(a1, a2){
+const arrayEquals = (a1, a2) => {
   if(a1 === null && a2 === null){
     return true;
   }
@@ -49,7 +49,7 @@ function arrayEquals(a1, a2){
   return true;
 }
 
-function removeDuplicates(cLikeString){
+const removeDuplicates = (cLikeString) => {
 
   if(cLikeString.length < 2) return;
 
@@ -70,14 +70,20 @@ function removeDuplicates(cLikeString){
   return cLikeString;
 }
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
+
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
 
 assert(arrayEquals(
   removeDuplicates(['b','o','w','w','w','i','e','e',null]), 

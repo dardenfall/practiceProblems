@@ -35,7 +35,7 @@
 // 3: 0,2 -> 2,3
 // 4: 0,3 -> 3,3
 
-function rotateMatrix(m){
+const rotateMatrix = (m) => {
   let rotatedMatrix = [];
 
   for (var i = 0; i < m.length; i++) {
@@ -51,7 +51,7 @@ function rotateMatrix(m){
   return rotatedMatrix;
 }
 
-function arrayEquals(a1, a2){
+const arrayEquals = (a1, a2) => {
   if(a1 === null && a2 === null){
     return true;
   }
@@ -72,21 +72,27 @@ function arrayEquals(a1, a2){
   return true;
 }
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
 
-let x = [['1','2','3','4'],
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+const x = [['1','2','3','4'],
          ['q','w','e','r'],
          ['a','s','d','f'],
          ['z','x','c','v']];
 
-let xRotated = rotateMatrix(x);
+const xRotated = rotateMatrix(x);
 assert(arrayEquals(xRotated[0],[ 'z', 'a', 'q', '1' ]), "0th row");
 assert(arrayEquals(xRotated[1],[ 'x', 's', 'w', '2' ]), "1st row");
 assert(arrayEquals(xRotated[2],[ 'c', 'd', 'e', '3' ]), "2nd row");

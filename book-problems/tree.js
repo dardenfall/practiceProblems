@@ -45,23 +45,22 @@ class Tree{
 
 }
 
-const assert = function(test, msg){
+const assert = (test, msg) => {
   let message = "";
   if(!test){
-    message = "Test FAILED!  "
+    message = "Test FAILED!  ";
   }
   else{
-    message = "test passed.  "
+    message = "test passed.  ";
   }
 
   if(msg){
     message += msg;
   }
   console.log(message);
-} 
+};
 
-console.log("foo")
-let t = new Tree();
+const t = new Tree();
 t.insert(5);
 t.insert(6);
 t.insert(7);

@@ -95,22 +95,25 @@
     }
   }
 
-  function assert(x, msg){
-    if(!x){
-      throw x.toString() + " is not true!";
+  const assert = (test, msg) => {
+    let message = "";
+    if(!test){
+      message = "Test FAILED!  ";
     }
-    else if(msg){
-      console.log("true: "  + msg);
+    else{
+      message = "test passed.  ";
     }
-  }
+  
+    if(msg){
+      message += msg;
+    }
+    console.log(message);
+  };
 
-
-  let s = new SetOfStacks(3);
-  debugger;
+  const s = new SetOfStacks(3);
   s.push(1);
   assert(s.pop() === 1, "1");
   s.push(1);s.push(2);s.push(3);s.push(4);
-  console.log('s');
   assert(s.pop() === 4, "4");
   assert(s.pop() === 3, "3");
   assert(s.pop() === 2, "2");

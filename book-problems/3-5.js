@@ -81,16 +81,22 @@ class MyQueue {
 
 }
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
 
-let q = new MyQueue();
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+const q = new MyQueue();
 q.enqueue(1);
 q.enqueue(2);
 assert(q.dequeue() === 1, "q.dequeue() === 1" );

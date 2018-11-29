@@ -48,7 +48,7 @@
 
   //Assumption - this can't be the last node in the list since we're being passed in a reference 
   //  and we can't set the referent pointing to that node to be null
-  function deleteNodeWithAccessOnlyToTheNode(node){
+  const deleteNodeWithAccessOnlyToTheNode = (node) => {
 
     let nextNode = node._next;
 
@@ -57,18 +57,22 @@
 
   }
 
-
-  function assert(x, msg){
-    if(!x){
-      throw x.toString() + " is not true!";
+  const assert = (test, msg) => {
+    let message = "";
+    if(!test){
+      message = "Test FAILED!  ";
     }
-    else if(msg){
-      console.log("true: "  + msg);
+    else{
+      message = "test passed.  ";
     }
-  }
+  
+    if(msg){
+      message += msg;
+    }
+    console.log(message);
+  };
 
   let x = new LinkedList();
   x.prepend("Tom");x.prepend("Petty");x.prepend("Tom");x.prepend("Waits");
   deleteNodeWithAccessOnlyToTheNode(x._head._next);
-  console.log(x)
-  assert( x.length() === 3, "length is now 3")
+  assert( x.length() === 3, "length is now 3");

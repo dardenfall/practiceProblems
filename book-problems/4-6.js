@@ -88,7 +88,7 @@ class Tree{
 
 }
 
-const assert = function(test, msg){
+const assert = (test, msg) => {
   let message = "";
   if(!test){
     message = "Test FAILED!  ";
@@ -103,7 +103,7 @@ const assert = function(test, msg){
   console.log(message);
 };
 
-let t = new Tree();
+const t = new Tree();
 t.insert(1);
 t.insert(2);
 t.insert(3);
@@ -115,5 +115,6 @@ assert(t.findCommonAncestor(t._root._left,t._root._right) === t._root,
        "t.findCommonAncestor(t._root._left,t._root._right) === t._root");
 assert(t.findCommonAncestor(t._root._left._left,t._root._left._right) === t._root._left,
        "t.findCommonAncestor(t._root._left._left,t._root._left._right) === t._root._left");       
+ //TODO - not working need to fix      
 assert(t.findCommonAncestor(t._root._left,t._root._left._right) === t._root,
-       "t.findCommonAncestor(t.findCommonAncestor(t._root._left,t._root._left._right) === t._root");       
+       "t.findCommonAncestor(t._root._left,t._root._left._right) === t._root");       

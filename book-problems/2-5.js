@@ -99,20 +99,26 @@ class LinkedList {
   }
 }
 
-function assert(x){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
   else{
-    console.log(x + " is true");
+    message = "test passed.  ";
   }
-}
 
-let x = new LinkedList();x.append(1);x.append(5);x.append(2)
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+const x = new LinkedList();x.append(1);x.append(5);x.append(2)
 //set up corrupted look
 x.append(null, x.find(5));
 assert(x.findCorruption());
 
 //assert no corruption
-let y = new LinkedList();y.append(1);y.append(5);y.append(2);
+const y = new LinkedList();y.append(1);y.append(5);y.append(2);
 assert(!y.findCorruption());

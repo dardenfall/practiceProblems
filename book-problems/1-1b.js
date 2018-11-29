@@ -24,15 +24,20 @@ function hasDuplicates(str){
   return false;
 }
 
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
+  }
+  else{
+    message = "test passed.  ";
+  }
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+  if(msg){
+    message += msg;
   }
-  else if(msg){
-    console.log("true: "  + msg);
-  }
-}
+  console.log(message);
+};
 
 assert(hasDuplicates("tooom"), "tooom");
 assert(!hasDuplicates("waits"), "waits");

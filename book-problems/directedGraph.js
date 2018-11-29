@@ -52,17 +52,22 @@ class DirectedGraph {
   }
 }
 
-
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
 
-let dg = new DirectedGraph(1);
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+const dg = new DirectedGraph(1);
 dg.add(2,1);
 dg.add(3,1);
 dg.add(4,2);

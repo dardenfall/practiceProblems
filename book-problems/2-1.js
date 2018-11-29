@@ -55,16 +55,22 @@ class LinkedList {
   }
 }
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
 
-let x = new LinkedList();
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+const x = new LinkedList();
 x.prepend("Tom");x.prepend("Petty");x.prepend("Tom");x.prepend("Waits");
 x.removeDuplicates();
 assert(x._head._val === "Waits", "Check root");

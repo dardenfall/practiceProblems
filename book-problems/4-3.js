@@ -91,21 +91,27 @@ class BST {
 
 }
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
+
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
 
 let b = new BST();
-let arr1 = [2,7,8,10,12,15];
+const arr1 = [2,7,8,10,12,15];
 b.insertSortedArray(arr1);
 assert(b.depth() === 3, "[2,7,8,10,12,15]");
 b = new BST();
-let arr2 = [1,2,3,4,5,6,7,8,10,12,15,18,19,21,25];
+const arr2 = [1,2,3,4,5,6,7,8,10,12,15,18,19,21,25];
 b.insertSortedArray(arr2);
 assert(b.depth() === 4, "[1,2,3,4,5,6,7,8,10,12,15,18,19,21,25];");
 

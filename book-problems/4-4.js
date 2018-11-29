@@ -155,23 +155,29 @@ class BST {
   }
 }
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
 
-let b = new BST();
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+const b = new BST();
 b.insert(5);
 b.insert(4);
 b.insert(3);
 b.insert(6);
 assert( BST.depthOfNode(b._root._left ,b._root ,1) === 2, 'BST.depthOfNode(b._root._left ,b._root ,1) === 2' );
 assert( BST.depthOfNode(b._root._left._left ,b._root ,1) === 3, 'BST.depthOfNode(b._root._left._left ,b._root ,1)');
-let lists = b.listify();
+const lists = b.listify();
 assert(lists[0]._head._val._val === 5, 'lists[0]._head._val._val === 5');
 assert(lists[1]._head._val._val === 4, 'lists[1]._head._val._val === 4');
 assert(lists[1]._head._next._val._val === 6, 'lists[1]._head._val._val === 6');

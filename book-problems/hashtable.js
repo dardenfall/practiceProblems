@@ -26,16 +26,22 @@ class StringHashTable {
 
 }   
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
 
-function arrayEquals(a1, a2){
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+const arrayEquals = (a1, a2) => {
   if(a1 === null && a2 === null){
     return true;
   }
@@ -56,7 +62,7 @@ function arrayEquals(a1, a2){
   return true;
 }
 
-var s = new StringHashTable();
+const s = new StringHashTable();
 
 s.insert("deus ex");s.insert("doom");s.insert("morrowind");
 s.insert("ftl");s.insert("dark souls");

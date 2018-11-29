@@ -1,13 +1,5 @@
 "use strict";
 //1.4     Write a method to decide if two strings are anagrams or not.
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
-  }
-  else if(msg){
-    console.log("true: "  + msg);
-  }
-}
 
 function oneOrInc(x){
   if(typeof x === 'undefined'){
@@ -50,6 +42,21 @@ String.prototype.isAnagram = function(str){
   
   return true;
 }
+
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
+  }
+  else{
+    message = "test passed.  ";
+  }
+
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
 
 var str1a = "abc";
 var str1b = "cba";

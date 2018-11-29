@@ -3,7 +3,7 @@
 // 
 // NOTE: this is using C-like strings will null for a delimiter
 
-function urlEncodeSpace(cLikeString){
+const urlEncodeSpace = (cLikeString) => {
 
   let newDelimiterIndex = 0;
   let newString = new Array();
@@ -26,7 +26,7 @@ function urlEncodeSpace(cLikeString){
   return newString;
 }
 
-function getStringLength(cLikeString){
+const getStringLength = (cLikeString) => {
   var length = 0; 
   
   while(cLikeString[length] !== null) {
@@ -37,7 +37,7 @@ function getStringLength(cLikeString){
 }
 
 
-function arrayEquals(a1, a2){
+const arrayEquals = (a1, a2) => {
   if(a1 === null && a2 === null){
     return true;
   }
@@ -59,14 +59,20 @@ function arrayEquals(a1, a2){
 }
 
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
+
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
 
 assert(arrayEquals(['a', 'b', null],['a', 'b', null]), "arrayEquals(['a', 'b', null],['a', 'b', null])")
 

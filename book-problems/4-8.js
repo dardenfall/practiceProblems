@@ -1,5 +1,6 @@
 "use strict";
-// 4.8 You are given a binary tree in which each node contains a value. Design an algorithm to print all paths which sum up to that value. 
+// 4.8 You are given a binary tree in which each node contains a value. Design an algorithm to print 
+//   all paths which sum up to that value. 
 //   Note that it can be any path in the tree - it does not have to start at the root.
 
 class Node {
@@ -15,29 +16,30 @@ class Tree{
     this._root = null;
   }
 
-  findCommonAncestor(node1, node2){
-    let q = [];
-    let result = null;
+  getSummationPaths(val){
 
-    q.push(this._root);
-  
-    while(q.length !== 0){
-      let tmp = q.shift();
+    
+    let pathArray = [];
 
-      if(this.dfsNode(node1, tmp) && this.dfsNode(node2, tmp)){
-        result = tmp;
+    const helper = function(val) {
+
+    };
+
+    const getSummationPath = function(currentNode, runningTotal, target){
+      if(currentNode === null){
+        return false;
       }
 
-      if(tmp._left !== null) {
-        q.push(tmp._left);
+      let newTotal = runningTotal + currentNode._val;
+      if(newTotal === target){
+        return currentNode;
       }
-      if(tmp._right !== null) {
-        q.push(tmp._right);
-      }
-      
-    }
 
-    return result;
+      return getSummationPath(currentNode._left, newTotal, target) ||
+        getSummationPath(currentNode._right, newTotal, target);
+    };
+
+    return pathArray;
   }
 
   insert(val){

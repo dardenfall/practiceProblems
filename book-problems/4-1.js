@@ -72,17 +72,22 @@ class BST {
   }
 }
 
-
-function assert(x){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
   else{
-    console.log("true:   " + x);
+    message = "test passed.  ";
   }
-}
 
-var x = new BST();
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+let x = new BST();
 x.insert(1);x.insert(2);x.insert(4);x.insert(2)
 assert(!x.balanced(), "not balanced is false")
 

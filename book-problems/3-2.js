@@ -49,16 +49,22 @@ class Stack {
   }
 }
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
 
-let s = new Stack();
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+const s = new Stack();
 s.push(1);
 assert(s.min() === 1, "min == 1");
 assert(s.pop() === 1, "1");

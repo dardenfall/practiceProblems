@@ -4,7 +4,7 @@
 //  s1 using only one call to isSubstring (i.e., “waterbottle” is a rotation of “erbottlewat”).
 
 
-function isRotation(str1, str2){
+const isRotation = (str1, str2) => {
 
   if(!str1 || !str2){
     return false;
@@ -23,14 +23,20 @@ function isRotation(str1, str2){
   return false;
 }
 
-function assert(x, msg){
-  if(!x){
-    throw x.toString() + " is not true!";
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
   }
-  else if(msg){
-    console.log("true: "  + msg);
+  else{
+    message = "test passed.  ";
   }
-}
+
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
 
 assert(isRotation("starman", "anstarm"), 'isRotation("starman", "anstarm")')
 assert(!isRotation(null, "anstarm"), 'isRotation(null, "anstarm")')

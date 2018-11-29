@@ -5,15 +5,6 @@
 // Input: (3 -> 1 -> 5) + (5 -> 9 -> 2)
 // Output: 8 -> 0 -> 8
 
-function assert(x){
-  if(!x){
-    throw x.toString() + " is not true!";
-  }
-  else{
-    console.log("true:   " + x);
-  }
-}
-
 class Node {
   constructor(val){
     this._val = val;
@@ -101,27 +92,42 @@ class LinkedList {
   }
 }
 
-let x = new LinkedList();x.append(1);x.append(0);x.append(2)
-let y = new LinkedList();y.append(4);y.append(0);y.append(5)
+const assert = (test, msg) => {
+  let message = "";
+  if(!test){
+    message = "Test FAILED!  ";
+  }
+  else{
+    message = "test passed.  ";
+  }
+
+  if(msg){
+    message += msg;
+  }
+  console.log(message);
+};
+
+const x = new LinkedList();x.append(1);x.append(0);x.append(2)
+const y = new LinkedList();y.append(4);y.append(0);y.append(5)
 assert(LinkedList.reverseAdd(x,y) === "705")
 
-let a1 = new LinkedList();a1.append(1);a1.append(9);a1.append(2)
-let b1 = new LinkedList();b1.append(4);b1.append(3);b1.append(5)
+const a1 = new LinkedList();a1.append(1);a1.append(9);a1.append(2)
+const b1 = new LinkedList();b1.append(4);b1.append(3);b1.append(5)
 assert(LinkedList.reverseAdd(a1,b1) === "825")
 
-let a2 = new LinkedList();a2.append(1);a2.append(2);
-let b2 = new LinkedList();b2.append(4);b2.append(3);b2.append(5)
+const a2 = new LinkedList();a2.append(1);a2.append(2);
+const b2 = new LinkedList();b2.append(4);b2.append(3);b2.append(5)
 assert(LinkedList.reverseAdd(a2,b2) === "555")
 
-let a3 = new LinkedList();a3.append(1);a3.append(2);
-let b3 = new LinkedList();b3.append(4);b3.append(9);b3.append(5)
+const a3 = new LinkedList();a3.append(1);a3.append(2);
+const b3 = new LinkedList();b3.append(4);b3.append(9);b3.append(5)
 assert(LinkedList.reverseAdd(a3,b3) === "615")
 
-let a4 = new LinkedList();a4.append(1);
-let b4 = new LinkedList();b4.append(4);
+const a4 = new LinkedList();a4.append(1);
+const b4 = new LinkedList();b4.append(4);
 assert(LinkedList.reverseAdd(a4,b4) === "5")
 
-let a5 = new LinkedList();a5.append(0);a5.append(9);
-let b5 = new LinkedList();b5.append(0);b5.append(1);b5.append(9)
+const a5 = new LinkedList();a5.append(0);a5.append(9);
+const b5 = new LinkedList();b5.append(0);b5.append(1);b5.append(9)
 assert(LinkedList.reverseAdd(a5,b5) === "1000")
 
