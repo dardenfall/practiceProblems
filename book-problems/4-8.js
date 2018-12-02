@@ -19,29 +19,50 @@ class Tree{
   }
 
   getSummationPaths(val){
+    let pathsArray = [];
 
-    
-    let pathArray = [];
-
-    const helper = function(val) {
-
-    };
-
-    const getSummationPath = function(currentNode, runningTotal, target){
+    const getSummationPath = function(currentNode, pathArray, runningTotal, target){
+      debugger;
       if(currentNode === null){
-        return false;
+        return;
       }
 
       let newTotal = runningTotal + currentNode._val;
+      pathArray.push(currentNode);
       if(newTotal === target){
-        return currentNode;
+        pathsArray.push(pathArray);
+        return;
       }
 
-      return getSummationPath(currentNode._left, newTotal, target) ||
-        getSummationPath(currentNode._right, newTotal, target);
+      getSummationPath(currentNode._left, pathArray.slice(), newTotal, target) ||
+      getSummationPath(currentNode._right, pathArray.slice(), newTotal, target);
     };
 
-    return pathArray;
+    let q = [];
+    q.push(this._root);
+
+    if(!this._root){
+      return pathsArray;
+    }
+
+    while(q.length !== 0){
+      let tmpNode = q.shift();
+
+      if(tmpNode._val === val){
+        pathsArray.push([tmpNode]); 
+      }
+      getSummationPath( tmpNode, [], 0, val);
+
+      if(tmpNode._left !== null){
+        q.push(tmpNode._left);
+      }
+      if(tmpNode._right !== null){
+        q.push(tmpNode._right);
+      }
+      
+    }
+
+    return pathsArray;
   }
 
   insert(val){
@@ -75,7 +96,7 @@ class Tree{
 
 }
 
-const assert = function(test, msg){
+const assert = (test, msg) => {
   let message = "";
   if(!test){
     message = "Test FAILED!  ";
@@ -88,19 +109,20 @@ const assert = function(test, msg){
     message += msg;
   }
   console.log(message);
-} 
+};
 
 let t = new Tree();
+assert(t.getSummationPaths(3).length === 0, "t.getSummationPaths(3).length === 0" );
 t.insert(1);
 t.insert(2);
 t.insert(3);
+t.insert(-1);
+t.insert(-2);
+t.insert(-4);
 t.insert(4);
-t.insert(5);
-t.insert(6);
-t.insert(7);
-assert(t.findCommonAncestor(t._root._left,t._root._right) === t._root,
-       "t.findCommonAncestor(t._root._left,t._root._right) === t._root");
-assert(t.findCommonAncestor(t._root._left._left,t._root._left._right) === t._root._left,
-       "t.findCommonAncestor(t._root._left._left,t._root._left._right) === t._root._left");       
-assert(t.findCommonAncestor(t._root._left,t._root._left._right) === t._root,
-       "t.findCommonAncestor(t.findCommonAncestor(t._root._left,t._root._left._right) === t._root");       
+
+let result = t.getSummationPaths(3);
+result.forEach((nodesPath) => {
+  console.log(nodesPath);
+  assert(nodesPath.reduce( (sum, node) => sum + node._val, 0)  === 3, nodesPath );
+})
