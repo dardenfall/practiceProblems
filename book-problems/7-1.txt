@@ -1,0 +1,32 @@
+7.1 Design the data structures for a generic deck of cards. Explain how you would subclass 
+it to implement particular card games.
+
+
+- nouns:
+  deck, card, suit, value, game, rules
+
+- verbs:
+  deal, shuffle, verify
+
+**** Classes *************************************
+   ***********
+enum Suit = {"CLUBS", "SPADES", "HEARTS", "DIAMONS"}
+
+Deck
+----
+- clubs = [Cards]
+- spades = [Cards]
+- hearts = [Cards]
+- diamonds = [Cards]
+* Deck()
+* shuffle
+* deal(Game)
+* verify
+
+Card
+----
+- Card(suit, value)
+- suit
+- value
+
+
