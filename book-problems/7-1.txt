@@ -29,4 +29,8 @@ Card
 - suit
 - value
 
-
+interface Game 
+--------------
+<< strategy >>
+- deal 
+- execute_turn
